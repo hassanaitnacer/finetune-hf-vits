@@ -27,7 +27,7 @@ Try out these spaces:
 <details>
   <summary>Open to listen to snippets of before and after finetuning </summary>
     
-https://github.com/ylacombe/finetune-hf-vits/assets/52246514/5f1fb903-59b8-4c0d-9bee-6a50c63c2bfa
+https://github.com/hassanaitnacer/finetune-hf-vits/assets/52246514/5f1fb903-59b8-4c0d-9bee-6a50c63c2bfa
 
 </details>
 
@@ -47,7 +47,7 @@ The VITS checkpoints are released under the permissive [MIT License](https://ope
 0. Clone this repository and install common requirements.
 
 ```sh
-git clone git@github.com:ylacombe/finetune-hf-vits.git
+git clone git@github.com:hassanaitnacer/finetune-hf-vits.git
 cd finetune-hf-vits
 pip install -r requirements.txt
 ```
@@ -120,14 +120,14 @@ Here is a non-exhaustive list of available checkpoint:
   <summary>Open for a checkpoints list </summary>
 
   * English
-    - `ylacombe/vits-ljs-with-discriminator` (make sure [the phonemizer package is installed](https://bootphon.github.io/phonemizer/install.html)) - ideal for monolingual finetuning
-    - `ylacombe/vits-vctk-with-discriminator` (make sure [the phonemizer package is installed](https://bootphon.github.io/phonemizer/install.html)) - ideal for multispeaker English finetuning.
-    - `ylacombe/mms-tts-eng-train` - if you want to avoid the use of the `phonemizer` package.
-  * Spanish - `ylacombe/mms-tts-spa-train`
-  * Korean - `ylacombe/mms-tts-kor-train`
-  * Marathi - `ylacombe/mms-tts-mar-train`
-  * Tamil - `ylacombe/mms-tts-tam-train`
-  * Gujarati - `ylacombe/mms-tts-guj-train`
+    - `hassanaitnacer/vits-ljs-with-discriminator` (make sure [the phonemizer package is installed](https://bootphon.github.io/phonemizer/install.html)) - ideal for monolingual finetuning
+    - `hassanaitnacer/vits-vctk-with-discriminator` (make sure [the phonemizer package is installed](https://bootphon.github.io/phonemizer/install.html)) - ideal for multispeaker English finetuning.
+    - `hassanaitnacer/mms-tts-ara-train` - if you want to avoid the use of the `phonemizer` package.
+  * Spanish - `hassanaitnacer/mms-tts-spa-train`
+  * Korean - `hassanaitnacer/mms-tts-ara-train`
+  * Marathi - `hassanaitnacer/mms-tts-mar-train`
+  * Tamil - `hassanaitnacer/mms-tts-tam-train`
+  * Gujarati - `hassanaitnacer/mms-tts-guj-train`
 </details>
 
 In that case you found the right checkpoints, note the repository name and pass directly to the next step 🤗.
@@ -188,10 +188,10 @@ accelerate launch run_vits_finetuning.py --model_name_or_path MODEL_NAME_OR_PATH
 * Everything related to artefacts: the `project_name` and the output directories (`hub_model_id`, `output_dir`) to keep track of the model.
 * The model to finetune: `model_name_or_path`.
   - Here it should point to the training checkpoint of the previous [section](#2-model-selection).
-  - For example, if you choose an already existing checkpoint: `ylacombe/vits-ljs-with-discriminator`, or if you converted your own checkpoint: `<repo-id-you-want>` or `<local-folder>`. 
+  - For example, if you choose an already existing checkpoint: `hassanaitnacer/vits-ljs-with-discriminator`, or if you converted your own checkpoint: `<repo-id-you-want>` or `<local-folder>`. 
 * The dataset used `dataset_name` and its details: `dataset_config_name`, column names, etc. 
   - If there are multiple speakers and you want to only keep one, be careful to `speaker_id_column_name`, `override_speaker_embeddings` and `filter_on_speaker_id`. The latter allows to keep only one speaker but you can also train on multiple speakers.
-  - For example the dataset used by default in [`finetune_english.json`](training_config_examples/finetune_english.json) is a subset of [British Isles accents dataset](https://huggingface.co/datasets/ylacombe/english_dialects), using a single Welsh female voice of the `welsh_female` configuration, identified by `speaker_id=5223`.
+  - For example the dataset used by default in [`finetune_english.json`](training_config_examples/finetune_english.json) is a subset of [British Isles accents dataset](https://huggingface.co/datasets/hassanaitnacer/english_dialects), using a single Welsh female voice of the `welsh_female` configuration, identified by `speaker_id=5223`.
 * The most important hyperparameters
    - `learning_rate`
    - `batch_size`
@@ -205,13 +205,13 @@ accelerate launch run_vits_finetuning.py --model_name_or_path MODEL_NAME_OR_PATH
 ## 4. Inference
 
 You can use a finetuned model via the Text-to-Speech (TTS) [pipeline](https://huggingface.co/docs/transformers/main_classes/pipelines#transformers.pipeline) in just a few lines of code!
-Just replace `ylacombe/vits_ljs_welsh_female_monospeaker_2` with your own model id (`hub_model_id`) or path to the model (`output_dir`).
+Just replace `hassanaitnacer/vits_ljs_welsh_female_monospeaker_2` with your own model id (`hub_model_id`) or path to the model (`output_dir`).
 
 ```python
 from transformers import pipeline
 import scipy
 
-model_id = "ylacombe/vits_ljs_welsh_female_monospeaker_2"
+model_id = "hassanaitnacer/vits_ljs_welsh_female_monospeaker_2"
 synthesiser = pipeline("text-to-speech", model_id) # add device=0 if you want to use a GPU
 
 speech = synthesiser("Hello, my dog is cooler than you!")
@@ -227,7 +227,7 @@ import subprocess
 from transformers import pipeline
 import scipy
 
-model_id = "facebook/mms-tts-kor"
+model_id = "facebook/mms-tts-ara"
 synthesiser = pipeline("text-to-speech", model_id) # add device=0 if you want to use a GPU
 
 def uromanize(input_string, uroman_path):

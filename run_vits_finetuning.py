@@ -589,8 +589,8 @@ def main():
 
     if training_args.do_train:
         raw_datasets["train"] = load_dataset(
-            data_args.dataset_name,
-            data_args.dataset_config_name,
+            "csv",
+            data_files=data_args.dataset_name,
             split=data_args.train_split_name,
             cache_dir=model_args.cache_dir,
             token=model_args.token,
@@ -598,7 +598,8 @@ def main():
 
     if training_args.do_eval:
         raw_datasets["eval"] = load_dataset(
-            data_args.dataset_name,
+            "csv",
+            data_files=data_args.dataset_name,
             data_args.dataset_config_name,
             split=data_args.eval_split_name,
             cache_dir=model_args.cache_dir,
