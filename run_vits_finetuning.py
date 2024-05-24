@@ -592,8 +592,6 @@ def main():
             "csv",
             data_files=data_args.dataset_name,
             split=data_args.train_split_name,
-            cache_dir=model_args.cache_dir,
-            token=model_args.token,
         )
 
     if training_args.do_eval:
@@ -601,8 +599,6 @@ def main():
             "csv",
             data_files=data_args.dataset_name,
             split=data_args.eval_split_name,
-            cache_dir=model_args.cache_dir,
-            token=model_args.token,
         )
 
     if data_args.audio_column_name not in next(iter(raw_datasets.values())).column_names:
