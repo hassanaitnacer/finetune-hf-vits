@@ -1087,7 +1087,7 @@ def main():
             disc_lr_scheduler.step()
             gen_lr_scheduler.step()
 
-        print("------------------- ", epoch)
+        logger.info(train_dataloader)
         for batch in train_dataloader:
             for k, v in batch.items():
                 logger.info(k)
