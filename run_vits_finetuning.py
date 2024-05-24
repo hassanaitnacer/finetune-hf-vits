@@ -600,7 +600,6 @@ def main():
         raw_datasets["eval"] = load_dataset(
             "csv",
             data_files=data_args.dataset_name,
-            data_args.dataset_config_name,
             split=data_args.eval_split_name,
             cache_dir=model_args.cache_dir,
             token=model_args.token,
