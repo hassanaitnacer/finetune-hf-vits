@@ -1088,6 +1088,11 @@ def main():
             gen_lr_scheduler.step()
 
         print("------------------- ", epoch)
+        for batch in train_dataloader:
+            for k, v in batch.items():
+                if v is None:
+                    print(f"Found None in batch for key: {k}")
+                    
         for step, batch in enumerate(train_dataloader):
             print(f"batch {step}, process{accelerator.process_index}, waveform {(batch['waveform'].shape)}, tokens {(batch['input_ids'].shape)}... ")
             with accelerator.accumulate(model, discriminator):
