@@ -1088,12 +1088,8 @@ def main():
             gen_lr_scheduler.step()
 
         logger.info(train_dataloader)
-        for batch in train_dataloader:
-            for k, v in batch.items():
-                logger.info(k)
-                logger.info(v)
-                if v is None:
-                    logger.info("Found None in key above")
+        for batch enumerate(train_dataloader)::
+            logger.info(batch)
 
         for step, batch in enumerate(train_dataloader):
             # print(f"batch {step}, process{accelerator.process_index}, waveform {(batch['waveform'].shape)}, tokens {(batch['input_ids'].shape)}... ")
