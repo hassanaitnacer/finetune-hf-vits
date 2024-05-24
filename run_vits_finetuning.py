@@ -1090,9 +1090,11 @@ def main():
         print("------------------- ", epoch)
         for batch in train_dataloader:
             for k, v in batch.items():
+                print(k, v)
                 if v is None:
                     print(f"Found None in batch for key: {k}")
-                    
+        print('doneeeeeeeeeeeeeeeeeeee')
+
         for step, batch in enumerate(train_dataloader):
             print(f"batch {step}, process{accelerator.process_index}, waveform {(batch['waveform'].shape)}, tokens {(batch['input_ids'].shape)}... ")
             with accelerator.accumulate(model, discriminator):
