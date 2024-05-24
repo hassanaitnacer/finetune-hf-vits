@@ -1088,7 +1088,7 @@ def main():
             gen_lr_scheduler.step()
 
         for step, batch in enumerate(train_dataloader):
-            # print(f"batch {step}, process{accelerator.process_index}, waveform {(batch['waveform'].shape)}, tokens {(batch['input_ids'].shape)}... ")
+            print(f"batch {step}, process{accelerator.process_index}, waveform {(batch['waveform'].shape)}, tokens {(batch['input_ids'].shape)}... ")
             with accelerator.accumulate(model, discriminator):
                 # forward through model
                 model_outputs = model(
