@@ -12,7 +12,7 @@
     "text_column_name":"text",
     "train_split_name": "train",
     "eval_split_name": "train",
-    "speaker_id_column_name": "speaker_id",
+    "speaker_id_column_name": "speaker",
     "override_speaker_embeddings": true,
     "filter_on_speaker_id": 5251,
 

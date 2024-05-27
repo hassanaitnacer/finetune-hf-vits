@@ -9,9 +9,11 @@
     "dataset_name": "./finetune-hf-vits/dataset/archive-v3.csv",
     "audio_column_name": "audio", 
     "text_column_name":"normalized_text",
-    "speaker_id_column_name":"speaker_id",
     "train_split_name": "train",
     "eval_split_name": "train",
+    "speaker_id_column_name": "speaker",
+    "override_speaker_embeddings": true,
+    "filter_on_speaker_id": 1,
 
     "full_generation_sample_text": "أفين العشير صافا عليك",
     
