@@ -34,7 +34,7 @@ from transformers.optimization import get_scheduler
 from transformers.trainer_pt_utils import LengthGroupedSampler
 from transformers.trainer_utils import get_last_checkpoint, is_main_process
 from transformers.utils import send_example_telemetry
-from utils import plot_alignment_to_numpy, plot_spectrogram_to_numpy, VitsDiscriminator, VitsModelForPreTraining, VitsFeatureExtractor, slice_segments, VitsConfig, uromanize
+from utils import plot_alignment_to_numpy, plot_spectrogram_to_numpy, VitsDiscriminator, VitsModelForPreTraining, VitsFeatureExtractor, slice_segments, VitsConfig, uromanizet
 
 
 if is_wandb_available():
@@ -1086,10 +1086,6 @@ def main():
         if training_args.do_step_schedule_per_epoch:
             disc_lr_scheduler.step()
             gen_lr_scheduler.step()
-
-        logger.info(train_dataloader)
-        for batch enumerate(train_dataloader)::
-            logger.info(batch)
 
         for step, batch in enumerate(train_dataloader):
             # print(f"batch {step}, process{accelerator.process_index}, waveform {(batch['waveform'].shape)}, tokens {(batch['input_ids'].shape)}... ")
