@@ -601,19 +601,6 @@ def main():
             split=data_args.eval_split_name,
         )
 
-    logger.info("$$$$$$$$$$$$$$$$$$$$$$$$")
-    logger.info(len(raw_datasets["train"]))
-
-    # Keep right audio files
-    def select_right_audio_files(audio):
-      return audio.startswith("./archive/audio/1_") or audio.startswith("./archive/bible/")
-    
-    raw_datasets["eval"] = raw_datasets["eval"].filter(select_right_audio_files, input_columns=["audio"])
-    raw_datasets["train"] = raw_datasets["train"].filter(select_right_audio_files, input_columns=["audio"])
-
-    logger.info("$$$$$$$$$$$$$$$$$$$$$$$$")
-    logger.info(len(raw_datasets["train"]))
-
     if data_args.audio_column_name not in next(iter(raw_datasets.values())).column_names:
         raise ValueError(
             f"--audio_column_name '{data_args.audio_column_name}' not found in dataset '{data_args.dataset_name}'. "
