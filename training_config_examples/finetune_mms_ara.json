@@ -12,8 +12,6 @@
     "train_split_name": "train",
     "eval_split_name": "train",
     "speaker_id_column_name": "speaker",
-    "override_speaker_embeddings": true,
-    "filter_on_speaker_id": 1,
 
     "full_generation_sample_text": "أفين العشير صافا عليك",
     
@@ -23,15 +21,16 @@
 
     "model_name_or_path": "facebook/mms-tts-ara",
     "feature_extractor_name": "./finetune-hf-vits/feature_extractor",
+    "tokenizer_name": "./finetune-hf-vits/feature_extractor",
 
     "preprocessing_num_workers": 1,
 
     "do_train": true,
-    "num_train_epochs": 200,
+    "num_train_epochs": 400,
     "max_train_samples": 150,
     "gradient_accumulation_steps": 1,
     "gradient_checkpointing": false,
-    "per_device_train_batch_size": 16,
+    "per_device_train_batch_size": 32,
     "learning_rate": 2e-5,
     "adam_beta1": 0.8,
     "adam_beta2": 0.99,
@@ -40,7 +39,7 @@
 
     "do_eval": true, 
     "eval_steps": 50,
-    "per_device_eval_batch_size": 16,
+    "per_device_eval_batch_size": 32,
     "max_eval_samples": 25, 
     "do_step_schedule_per_epoch": true,
 
