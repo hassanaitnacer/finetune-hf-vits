@@ -6,7 +6,7 @@
     "overwrite_output_dir": true,
     "output_dir": "./tmp/vits_finetuned_ara",
 
-    "dataset_name": "./finetune-hf-vits/dataset/archive-v3.csv",
+    "dataset_name": "./finetune-hf-vits/dataset/archive-v3-truncated.csv",
     "audio_column_name": "audio", 
     "text_column_name":"normalized_text",
     "train_split_name": "train",
@@ -26,11 +26,11 @@
     "preprocessing_num_workers": 1,
 
     "do_train": true,
-    "num_train_epochs": 400,
+    "num_train_epochs": 200,
     "max_train_samples": 150,
     "gradient_accumulation_steps": 1,
     "gradient_checkpointing": false,
-    "per_device_train_batch_size": 32,
+    "per_device_train_batch_size": 16,
     "learning_rate": 2e-5,
     "adam_beta1": 0.8,
     "adam_beta2": 0.99,
@@ -39,7 +39,7 @@
 
     "do_eval": true, 
     "eval_steps": 50,
-    "per_device_eval_batch_size": 32,
+    "per_device_eval_batch_size": 16,
     "max_eval_samples": 25, 
     "do_step_schedule_per_epoch": true,
 
